@@ -1,0 +1,207 @@
+/* === CONFIGURACIÓN BASE === */
+:root {
+    --primary: #FF9A9E;    /* Rosa suave */
+    --secondary: #FECFEF;  /* Rosa muy claro */
+    --accent: #84FAB0;     /* Verde menta */
+    --sky: #A0C4FF;        /* Azul cielo */
+    --story-bg: #E3F2FD;   /* Fondo azul muy clarito */
+    --dark: #4A4A4A;       /* Gris oscuro texto */
+    --bg: #F5F7FA;         /* Fondo web */
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--dark);
+    
+    /* === TU IMAGEN DE FONDO (MANTENIDA) === */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+        url('./images/fondoWebRinconBea.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    display: flex; justify-content: center;
+    min-height: 100vh; 
+    overflow-x: hidden; 
+    position: relative;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.container {
+    width: 100%; 
+    max-width: 500px; /* Móvil */
+    background: white; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    padding: 20px; 
+    border-radius: 0 0 20px 20px;
+    transition: max-width 0.3s ease;
+}
+
+/* === HEADER Y DECORACIÓN (NUEVO) === */
+header { 
+    text-align: center; 
+    margin-bottom: 30px; 
+    padding-top: 20px; 
+    position: relative; /* Necesario para que los iconos se queden dentro del header */
+}
+
+header p { margin-top: 20px; }
+
+/* Posicionamiento de los iconos decorativos */
+.header-decor {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    font-size: 1.8rem; /* Tamaño base iconos móvil */
+}
+
+.header-decor.left { left: 10px; }
+.header-decor.right { right: 10px; }
+
+/* Animación y colores pastel */
+.header-decor i {
+    animation: gentle-float 4s ease-in-out infinite;
+}
+
+/* Colores específicos para cada icono (Izquierda) */
+.header-decor.left i:nth-child(1) { color: var(--primary); animation-delay: 0s; } /* Nota musical */
+.header-decor.left i:nth-child(2) { color: #fff09c; animation-delay: 1s; font-size: 1.5rem; } /* Estrella (Amarillo pastel) */
+
+/* Colores específicos para cada icono (Derecha) */
+.header-decor.right i:nth-child(1) { color:#b3caef; animation-delay: 0.5s; } /* Nube */
+.header-decor.right i:nth-child(2) { color:#bbdea8; animation-delay: 1.5s; font-size: 1.5rem; } /* Avión */
+
+/* La animación suave */
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+
+/* Foto de perfil */
+.profile-pic {
+    width: 100px; height: 100px;
+    border-radius: 50%; margin: 0 auto 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; border: 3px solid white;
+    position: relative; z-index: 2; /* Para que esté por encima de los iconos si se tocan */
+}
+
+.profile-pic img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+h1 { font-size: 1.5rem; color: var(--primary); position: relative; z-index: 2; }
+h2 { font-size: 1.2rem; margin-bottom: 10px; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+.subtitle { margin-bottom: 15px; color: #888; font-size: 0.9rem; }
+h3 { text-align: center; font-size: 1rem; color: var(--sky); margin-bottom: 10px; }
+
+hr { border: 0; border-top: 2px dashed #eee; margin: 30px 0; }
+
+/* === REPRODUCTOR YOUTUBE === */
+.video-container {
+    position: relative; padding-bottom: 56.25%; height: 0;
+    overflow: hidden; border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: black;
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* === SLIDER DE FOTOS === */
+.slider-container {
+    position: relative; width: 100%; height: 250px;
+    background-color: #f0f8ff; border-radius: 15px;
+    overflow: hidden; border: 3px solid var(--story-bg);
+    display: flex; align-items: center; justify-content: center;
+}
+.slider-container img { max-width: 100%; max-height: 100%; display: block; }
+
+.nav-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none; color: var(--sky);
+    font-size: 1.5rem; padding: 10px; cursor: pointer;
+    border-radius: 50%; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+.nav-btn:hover { background: white; color: blue; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.page-counter {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(0,0,0,0.5); color: white;
+    padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;
+}
+
+/* === LISTAS DE REPRODUCCIÓN === */
+.playlist {
+    margin-top: 15px; 
+    display: flex; flex-direction: column; 
+    gap: 10px; max-height: 250px; overflow-y: auto;
+}
+
+.song-btn {
+    background: white; border: 2px solid #eee; padding: 10px 15px;
+    border-radius: 10px; cursor: pointer; text-align: left;
+    transition: all 0.2s; display: flex; align-items: center; gap: 10px;
+    font-weight: 600; color: #555;
+}
+.song-btn:hover { background: var(--secondary); border-color: var(--primary); transform: translateX(5px); }
+.song-btn i { color: var(--primary); }
+
+.song-btn.active {
+    background-color: var(--primary); color: white;
+    border-color: var(--primary); transform: translateX(5px);
+}
+.song-btn.active i { color: white; }
+
+.story-btn:hover { background: var(--story-bg); border-color: var(--sky); }
+.story-btn i { color: var(--sky); }
+
+.story-btn.active {
+    background-color: var(--sky); color: white;
+    border-color: var(--sky);
+}
+.story-btn.active i { color: white; }
+
+/* === AUDIOS === */
+.audio-card { background: #FFF8E1; padding: 15px; border-radius: 12px; margin-bottom: 10px; }
+.audio-card span { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+audio { width: 100%; height: 35px; }
+
+footer { text-align: center; margin-top: 40px; padding-bottom: 20px; font-size: 0.8rem; color: #ccc; }
+
+/* === MEDIA QUERY (PC) === */
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px; padding: 40px;
+        margin-top: 20px; margin-bottom: 20px;
+        border-radius: 30px;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+    
+    .slider-container { height: 450px; }
+    
+    .playlist {
+        display: grid; grid-template-columns: 1fr 1fr; 
+        gap: 15px; max-height: 400px;
+    }
+    .song-btn:hover, .song-btn.active { transform: translateY(-3px); }
+
+    /* En PC, separamos un poco más los iconos laterales */
+    .header-decor.left { left: 40px; }
+    .header-decor.right { right: 40px; }
+    .header-decor { font-size: 2.5rem; } /* Iconos más grandes en PC */
+}

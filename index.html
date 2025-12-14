@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Rincón de la Profe Bea</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <header>
+            <div class="header-decor left">
+                <i class="fa-solid fa-music"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="header-decor right">
+                <i class="fa-solid fa-cloud"></i>
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="profile-pic">
+                <img src="images/logoCanta.jpg" alt="Foto de la Profe Bea">
+            </div>
+            <h1>El rincón de la Profe Bea</h1>
+            <p><i class="fa-solid fa-music"></i> Lo que nos canta y los cuentos que hace para nosotros <i class="fa-solid fa-book-open"></i></p>
+        </header>
+
+        <section class="video-section">
+            <h2><i class="fa-brands fa-youtube"></i> Nuestras Favoritas de este curso</h2>
+            
+            <div class="video-container">
+                <iframe id="main-player" 
+                    src="https://www.youtube.com/embed/NN-rq5DF3Tc" 
+                    title="Reproductor Canciones" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="playlist" id="video-list"></div>
+        </section>
+
+        <hr>
+
+        <section class="story-section">
+            <h2><i class="fa-solid fa-book-open"></i> Cuentos de a Bordo</h2>
+            <p class="subtitle">Aerolínea Las Ardillas 🐿️✈️</p>
+            
+            <h3 id="story-title-display">Selecciona un cuento abajo 👇</h3>
+
+            <div class="slider-container">
+                <img id="story-image" src="" alt="Imagen del cuento">
+                
+                <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+                <button class="nav-btn next" onclick="nextSlide()">❯</button>
+                
+                <div class="page-counter" id="page-counter">0 / 0</div>
+            </div>
+
+            <div class="playlist" id="story-list"></div>
+        </section>
+
+        <hr>
+
+        
+
+        <footer>
+            <p>Hecho con ❤️ para mis peques</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
